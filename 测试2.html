@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style type="text/css">
+    #con{
+        top: 400px;
+        width: 1000px;
+        height: 900px;
+        margin: auto;
+        background-color:#85fff7;
+    }
+
+    input{
+        width: 100%;
+        height:30px;
+    }
+    table{
+        text-align: center;
+        box-shadow: 0px 1px 66px white ;
+        height: 700px;
+        background-color:ghostwhite;
+        font-size: larger;
+    }
+    a{
+        font-weight: 200;
+        text-decoration: none;
+    }
+
+</style>
+<script>
+    function quxiao(){
+        localStorage.autolog=false;
+
+    }
+</script>
+<body>
+<div id="con">
+<a href="login.html">返回</a>
+<button onclick="quxiao()">取消自动登录</button>
+<h1>总分:<span id="all"></span></h1>
+<form id="form">
+    <table  align="center" width="70%">
+        <tr>
+            <td>问题</td>
+            <td>答案</td>
+            <td>结果</td>
+            <td>分数</td>
+        </tr>
+        <tr>
+            <td>1+3+99=?</td>
+            <td><input type="text" id="test1" onchange="test('1','103')"/></td>
+            <td><span id="show1"></span></td>
+            <td> <span id="s1">0</span></td>
+        </tr>
+        <tr>
+            <td>1+3=?</td>
+            <td><input type="text" id="test2" onchange="test('2','4')"/></td>
+            <td><span id="show2"></span></td>
+            <td> <span id="s2">0</span></td>
+        </tr>
+        <tr>
+            <td>高博属于哪个市？</td>
+            <td><input type="text" id="test3" onchange="test('3','苏州')"/></td>
+            <td><span id="show3"></span></td>
+            <td> <span id="s3">0</span></td>
+        </tr>
+        <tr>
+            <td>
+                熊猫是熊吗？
+            </td>
+            <td><input type="text" id="test4" onchange="test('4','不是')"/></td>
+            <td><span id="show4"></span></td>
+            <td> <span id="s4">0</span></td>
+        </tr>
+        <tr>
+            <td>
+                我国的首都是？
+            </td>
+            <td><input type="text" id="test5" onchange="test('5','北京')"/></td>
+            <td><span id="show5"></span></td>
+            <td> <span id="s5">0</span></td>
+        </tr>
+        <tr>
+            <td>我国有多少个省？
+            </td>
+            <td><input type="text" id="test6" onchange="test('6','34')"/></td>
+            <td><span id="show6"></span></td>
+            <td> <span id="s6">0</span></td>
+        </tr>
+        <tr>
+            <td>
+                你吃草吗？
+            </td>
+            <td><input type="text" id="test7" onchange="test('7','吃')"/></td>
+            <td><span id="show7"></span></td>
+            <td> <span id="s7">0</span></td>
+        </tr>
+        <tr>
+            <td>
+                我国有多少个省？
+            </td>
+            <td><input type="text" id="test8" onchange="test('8','34')"/></td>
+            <td><span id="show8"></span></td>
+            <td> <span id="s8">0</span></td>
+        </tr>
+        <tr>
+            <td>
+                computer是什么意思？
+            </td>
+            <td><input type="text" id="test9" onchange="test('9','电脑')"/></td>
+            <td><span id="show9"></span></td>
+            <td> <span id="s9">0</span></td>
+        </tr>
+        <tr>
+            <td>我很聪明是不是？
+            </td>
+            <td><input type="text" id="test10" onchange="test('10','是');addall()"/></td>
+            <td><span id="show10"></span></td>
+            <td> <span id="s10">0</span></td>
+        </tr>
+    </table>
+
+</form>
+<script>
+    function test(e,answer) {
+        var test = document.getElementById("test"+e);
+        var show = document.getElementById("show"+e);
+        var s=document.getElementById("s"+e);
+        if (test.value == answer) {
+            show.style.color = "rgb(0,255,0)";
+            show.innerHTML = "正确";
+            s.innerHTML=10;
+        } else {
+            show.style.color = "rgb(255,0,0)";
+            show.style.fontWeight =800;
+            show.innerHTML = "错误";
+            s.innerHTML=0;
+        }
+        addall();
+    }
+    function addall(){
+        var sum=0;
+        for(var i=1;i<=10;i++){
+            var e=document.getElementById("s"+i);
+            if(e.innerHTML=="10") {
+                sum += 10;
+            }
+        }
+        var e=document.getElementById("all");
+        e.innerHTML=sum;
+    }
+</script>
+</div>
+</body>
+</html>
